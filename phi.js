@@ -122,3 +122,58 @@ function styleElementSibling ( tag , theClass ) {
 		addClass( elem , theClass );
 	}
 }
+
+function moveElement( elementID , finaX , finaY , interval ) {
+	if( !document.getElementById )	return false;
+	if( !document.getElementById( elementID ) )	return false;
+	
+	var elem = document.getElementById( elementID );
+	if ( elem.movement )
+	{
+		clearTimeout( elem.movement );
+	}
+
+	if ( !elem.style.top )
+	{
+		elem.style.top = 0 + "px";
+	}
+	if ( !elem.style.left )
+	{
+		elem.style.left = 0 +"px";
+	}
+
+	var posX = parseInt( elem.style.left );
+	var posY = parseInt( elem.style.top );
+	var dist = 0;
+
+	if ( posX == finaX && posY == finaY)
+	{
+		return true;
+	}
+	
+	if ( posX < finaX )
+	{
+		dist = Math.ceil( (finaX -posX) /10 );
+		posX = posX + dist; 
+	}
+	if ( posX > finaX )
+	{
+		dist = Math.ceil( (finaX -posX) /10 );
+		posX = posX - dist; 
+	}
+	if ( posY < finaY )
+	{
+		dist = Math.ceil( ( finaY - posY )/ 10 );
+		posY = posY + dist;
+	}
+	if ( posY > finaY )
+	{
+		dist = Math.ceil( ( finaY - posY )/ 10 );
+		posY = posY - dist;
+	}
+	elem.style.left = posX + "px";
+	elem.style.top = posY + "px";
+
+	var repeat = "moveElement('" + elementID + "' , "+finaX+" , "+finxY+" , "+interval+")";
+	elem.movement = setTimeout( repeat , interval );
+}
