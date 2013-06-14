@@ -177,3 +177,19 @@ function moveElement( elementID , finaX , finaY , interval ) {
 	var repeat = "moveElement('" + elementID + "' , "+finaX+" , "+finxY+" , "+interval+")";
 	elem.movement = setTimeout( repeat , interval );
 }
+
+//统计出现次数最多的字符
+function counterStr( str ) {
+	var maxLenght = 0;//命名一个变量放置字母出现的最高次数并初始化为0  
+	var result = ''; //命名一个变量放置结果输入
+	while( str != '' ) { //循环迭代开始，并判断字符串是否为空 
+		oldStr = str;//将原始字符串保存
+		getStr = str.substr( 0 , 1 );//取得字符串的第一个字符
+		eval( "str = str.replace(/"+getStr+"/g , '' )" );//剔除第一个元素
+		if( oldStr.length - str.length > maxLength ) {//判断原始的字符串长度减去替代后字符串长度是否大于之前出现的最大的字符串长度
+				maxLength = oldStr.length - str.length;//两字符串长度相减得到最大的字符串长度
+				result = getStr + " = " + maxLength;//返回最大的字符串结果（字母、出现次数）
+		}
+	}
+	return result;
+}
