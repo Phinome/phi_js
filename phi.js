@@ -72,7 +72,7 @@
 				return getNextElement( node.nextSibling );
 			}
 			return null;
-		}
+		},
 		
 		stripeTables : function( colors ) {
 			if( !document.getElementsByTagName)		return false;
@@ -93,7 +93,7 @@
 					}
 				}
 			}
-		}
+		},
 		
 		heightLightRows : function() {
 			if( !document.getElementsByTagName )	return false;
@@ -108,7 +108,7 @@
 					this.style.fontWeight = 'normal';
 				}
 			}
-		}
+		},
 		
 		addClass :function( element , value ) {
 			if( !element.className )
@@ -121,7 +121,7 @@
 				newClassName += value;
 				element.className = newClassName;
 			}
-		}
+		},
 		
 		styleElementSibling : function( tag , theClass ) {
 			if ( !document.getElementsByTagName)	return false;
@@ -133,7 +133,7 @@
 				elem = getNextElement( elems[i].nextSibling );
 				addClass( elem , theClass );
 			}
-		}
+		},
 		
 		moveElement : function( elementID , finaX , finaY , interval ) {
 			if( !document.getElementById )	return false;
@@ -188,7 +188,7 @@
 		
 			var repeat = "moveElement('" + elementID + "' , "+finaX+" , "+finxY+" , "+interval+")";
 			elem.movement = setTimeout( repeat , interval );
-		}
+		},
 		
 		//统计出现次数最多的字符
 		counterStr : function( str ) {
